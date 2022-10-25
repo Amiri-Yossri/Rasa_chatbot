@@ -1,0 +1,139 @@
+version: "3.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - bot_challenge
+  - transfer_money
+  - check_balance
+  - loan_application
+
+entities:
+  - account_number
+  - MONEY
+  - DATE
+  - purpose
+
+
+slots: 
+  account_number1:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: account_number
+
+  account_number2:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: account_number
+
+  amount:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: MONEY
+  
+  loan_term:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: DATE
+
+  amount1:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: MONEY
+
+  account_number:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: account_number
+
+  purpose:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: purpose
+
+  
+
+
+    
+
+
+    
+forms:
+  simple_transaction_form:
+    required_slots:
+      - account_number1
+      - account_number2
+      - amount
+  simple_balance_form:
+    required_slots:
+      - account_number
+  simple_loan_form:
+    required_slots:
+      - amount1
+      - loan_term
+      - purpose
+    
+
+responses:
+
+  utter_greet:
+  - text: hey
+  utter_goodbye:
+  - text: bye
+  utter_ask_account_number1:
+  - text: give me your account number which you would like to send from
+  utter_ask_amount:
+  - text: give me the amount of money you want to send
+  utter_ask_account_number2:
+  - text: give me his account number 
+  utter_ask_account_number:
+  - text: give me your account number 
+  utter_ask_amount1:
+  - text: give me the amount of money you want to get 
+  utter_ask_loan_term:
+  - text: give me the loan term
+  utter_ask_purpose:
+  - text: why do you want to apply for a loan?
+  utter_loan:
+  - text: you want to get a {purpose} loan of {amount1} for {loan_term}
+  utter_transfer:
+  - text: ok you want to send money to {account_number2} from your account number {account_number1} amounting of {amount}
+  utter_purpose:
+  - text: you applied for a {purpose} loan
+
+
+
+actions:
+- validate_simple_transaction_form
+- validate_simple_balance_form
+- validate_simple_loan_form
+- action_verify
+- action_loan
+
+
+
+
+
+
+
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

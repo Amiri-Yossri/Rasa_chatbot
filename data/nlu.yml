@@ -1,0 +1,162 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    
+- regex: account_number
+  examples: |
+    - \d{10,12}
+- intent: transfer_money
+  examples: |
+    - i want to send money to my friend, my account number is [1234567891](account_number)
+    - This is my account number [1234567891](account_number) and i want to send some money to a friend
+    - i want to send money to my friend, my account number is 1234567891
+    - This is my account number 1234567891 and i want to send some money to a friend
+    - i'm going to lend money to a friend
+    - send money 
+    - could you please give some money to my dad
+    - I'm going to lend money to my friend
+    - I want to pay someone
+    - can i transfer money to my brother
+    - I want to transfer money
+    - I want to transfer [200 euros] (MONEY)
+    - I want to send [200 dinars] (MONEY)
+    - I want to pay someone
+    - can I pay someone from my account_number
+    - I need to transfer money
+    - can I transfer money 
+    - pay my friend 
+    - transfer money
+    - i want to transfer   
+    - I want to pay 
+    - pay please
+    - transfer
+    - pay please
+    - send money
+
+- intent: check_balance
+  examples: |
+    - my account number is [1234567891](account_number)
+    - This is my account number [1234567891](account_number)
+    - How much do I have on that account?
+    - What's the balance on that account?
+    - How much money is left on that account?
+    - what is my account balance
+    - what is my bank account balance?
+    - What's my credit card balance
+    - What's my credit balance
+    - How much money do I owe on my credit cards
+    - Show me my credit card balance
+    - Whats the balance on my credit account
+    - What's my credit account
+    - what's my credit card balance?
+    - what's my credit card account balance?
+    - How much money have i spent lately>
+    - I should check my credit card balance
+    - check my credit card balance
+    - Can you tell me my account balance?
+    - Hello, I would like to know how much money is in account
+    - hi, whats my account bal please
+    - so.... what's my balance?
+    - whats my current balance
+    - What's my balance?
+    - How much money do I have?
+    - what places have I spent money?
+    - Wait, I'll have to check my balance first. Can you do that please?
+    - Hi, I need to know how much money is in my checking account
+    - Balance please
+    - i want to know my solde
+
+- intent: loan_application
+  examples: |
+    - i want to get a loan 
+    - i want to get a loan to buy a [land](purpose)
+    - i wanna get a credit
+    - i wanna get a credit to buy a [home](purpose)
+    - i'm asking for a small business loan amounting to [$50000] (MONEY)
+    - i need a loan to buy a [house](purpose)
+    - i want to apply for a personal loan of an amount of [$800000] (MONEY) for [5 years] (DATE)  
+    - i request you to kindly grant me a loan to buy a [motorcycle](purpose)
+    - i request to sanction me a loan amounting to [$5000000] (MONEY)
+    - i request to sanction me a loan amounting to [$5000000] (MONEY) to get a [CHEVROLET](purpose)
+    - i request a personal loan for education purpose to get a [fiat](purpose)
+    - i want an application for a [$500000] (MONEY) amount loan
+    - i want an application for a [$500000] (MONEY) amount loan to buy a [PORSCH](purpose)
+    - i'm in need of a loan of a [$70000] (MONEY) for a term of [1 year] (DATE)   
+    - i'm in need of a loan of a [$70000] (MONEY) for a term of [1 year] (DATE) to buy a [residence](purpose) 
+    - I am requesting a business loan in the amount of [$25000] (MONEY) for the purpose of expanding my warehouse facilities.
+    - i want a mortage of [$100000] (MONEY) for [5 years] (DATE)  
+    - i want a mortage of [$100000] (MONEY) for [5 years] (DATE) to buy an [appartment](purpose)
+    - i want to borrow a debt for [10 years](DATE)   
+    - i want to borrow a debt for [10 years](DATE) to buy an [accomodation](purpose)
+    - I'm wondering to get a mortage for [4 years](DATE)  amounting of [100000] (MONEY)
+    - I'm wondering to get a mortage for [4 years](DATE)  amounting of [100000] (MONEY) for getting [property](purpose)
+    - Can i get a loan mortage
+    - Can i get a loan mortage to get a [vehicle](purpose)
+    - may i get a debt
+    - may i get a debt to get a car(purpose) 
+    - can you lend me money
+    - i want a credit
+    - i want a credit to buy [AUDI](purpose)  
+    - i wanna a credit for [6 years] (DATE)   
+    - i wanna a credit for [6 years] (DATE) 
+    - i'm applying for a mortage
+    - can you borrow me debt
+    - can you give me a lending of [$88000] (MONEY) for [3 years] (DATE)  
+    - debt
+    - loan
+    - [250000 dollars] (MONEY) for [7 years] (DATE)
+    - [$80000] (MONEY)

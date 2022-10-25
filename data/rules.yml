@@ -1,0 +1,69 @@
+version: "2.0"
+
+rules:
+
+- rule: Say hello anytime the user says goodbye
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Activate transaction form
+  condition:
+  - active_loop: null
+  steps:
+  - intent: transfer_money
+  - action: simple_transaction_form
+  - active_loop: simple_transaction_form
+
+- rule: Submit transaction Form
+  condition:
+  - active_loop: simple_transaction_form
+  steps:
+  - action: simple_transaction_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_transfer
+  - action: action_verify
+
+- rule: Activate balance form
+  condition:
+  - active_loop: null
+  steps:
+  - intent: check_balance
+  - action: simple_balance_form
+  - active_loop: simple_balance_form
+
+- rule: Submit balance Form
+  condition:
+  - active_loop: simple_balance_form
+  steps:
+  - action: simple_balance_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  #- action: utter_balance
+
+- rule: Activate loan form
+  condition:
+  - active_loop: null
+  steps:
+  - intent: loan_application 
+  - action: simple_loan_form
+  - active_loop: simple_loan_form
+
+- rule: Submit loan Form
+  condition:
+  - active_loop: simple_loan_form
+  steps:
+  - action: simple_loan_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_loan
+  - action: action_loan
